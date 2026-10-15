@@ -101,12 +101,18 @@
   .sub { color: var(--muted); margin: 0 0 40px; max-width: 60ch; }
 
   /* Projects as drawing details */
+  .group { margin-top: 56px; }
+  .group:first-of-type { margin-top: 0; }
+  .group-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; border-bottom: 1.5px solid var(--ink); }
+  .group-head h3 { font-size: 24px; margin: 0; font-variation-settings: "wdth" 112; }
+  .group-head p { margin: 0; color: var(--muted); font-size: 15px; }
+  .group .project:first-of-type { border-top: 0; }
   .project {
     display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center;
     padding: 40px 0; border-top: 1px solid var(--line);
   }
   .project:last-child { border-bottom: 1px solid var(--line); }
-  .project:nth-child(even) .figure { order: 2; }
+  .project:nth-of-type(even) .figure { order: 2; }
   .figure {
     aspect-ratio: 4 / 3; border: 1px solid var(--ink); background: #fff; position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
@@ -118,7 +124,7 @@
     display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px;
     border: 1.5px solid var(--ink); border-radius: 50%; font-weight: 700; font-size: 14px; margin-bottom: 16px;
   }
-  .project h3 { font-size: 26px; margin: 0 0 10px; font-variation-settings: "wdth" 110; }
+  .project h4 { font-size: 26px; margin: 0 0 10px; font-variation-settings: "wdth" 110; }
   .project p { margin: 0 0 16px; color: var(--muted); max-width: 46ch; }
   .chips { display: flex; gap: 8px; flex-wrap: wrap; padding: 0; margin: 0; list-style: none; }
   .chips li { font-size: 13px; padding: 4px 10px; background: var(--steel-soft); color: var(--steel); font-weight: 600; }
@@ -144,7 +150,7 @@
     .sheet { grid-template-columns: 1fr; padding: 56px 24px 24px; margin-top: 24px; }
     .titleblock { min-width: 0; width: 100%; }
     .project { grid-template-columns: 1fr; gap: 24px; }
-    .project:nth-child(even) .figure { order: 0; }
+    .project:nth-of-type(even) .figure { order: 0; }
     .skills { grid-template-columns: 1fr; }
     .skill + .skill { padding-left: 0; border-left: 0; }
     section { padding-top: 72px; }
@@ -188,37 +194,75 @@
 
   <section id="projects">
     <h2>Projects</h2>
-    <p class="sub">Selected CAD work. Each project is modeled from the ground up in Siemens NX or SolidWorks.</p>
+    <p class="sub">CAD work from the solar car team and my mechanical engineering courses, modeled in Siemens NX and SolidWorks.</p>
 
-    <article class="project">
-      <div class="figure" data-img="images/engine.jpg" data-label="Engine"></div>
-      <div>
-        <div class="detail-tag" aria-hidden="true">A</div>
-        <h3>Engine</h3>
-        <p>Full engine assembly modeled in CAD, from individual components to the complete assembly.</p>
-        <ul class="chips"><li>Assembly</li><li>3D CAD</li></ul>
+    <div class="group" id="solar">
+      <div class="group-head">
+        <h3>Solar car team</h3>
+        <p>Parts designed for a working solar-powered vehicle.</p>
       </div>
-    </article>
+      <article class="project">
+        <div class="figure" data-img="images/solar-1.jpg" data-label="Solar team project 1"></div>
+        <div>
+          <div class="detail-tag" aria-hidden="true">A</div>
+          <h4>Solar team project 1</h4>
+          <p>Description coming soon.</p>
+          <ul class="chips"><li>3D CAD</li></ul>
+        </div>
+      </article>
+      <article class="project">
+        <div class="figure" data-img="images/solar-2.jpg" data-label="Solar team project 2"></div>
+        <div>
+          <div class="detail-tag" aria-hidden="true">B</div>
+          <h4>Solar team project 2</h4>
+          <p>Description coming soon.</p>
+          <ul class="chips"><li>3D CAD</li></ul>
+        </div>
+      </article>
+      <article class="project">
+        <div class="figure" data-img="images/solar-3.jpg" data-label="Solar team project 3"></div>
+        <div>
+          <div class="detail-tag" aria-hidden="true">C</div>
+          <h4>Solar team project 3</h4>
+          <p>Description coming soon.</p>
+          <ul class="chips"><li>3D CAD</li></ul>
+        </div>
+      </article>
+    </div>
 
-    <article class="project">
-      <div class="figure" data-img="images/bell-housing.jpg" data-label="Bell housing"></div>
-      <div>
-        <div class="detail-tag" aria-hidden="true">B</div>
-        <h3>Bell housing</h3>
-        <p>Bell housing connecting the engine to the transmission, designed around mounting and clearance requirements.</p>
-        <ul class="chips"><li>Part design</li><li>3D CAD</li></ul>
+    <div class="group" id="class">
+      <div class="group-head">
+        <h3>Class projects</h3>
+        <p>Design work from mechanical engineering courses at Michigan State.</p>
       </div>
-    </article>
-
-    <article class="project">
-      <div class="figure" data-img="images/fan.jpg" data-label="Fan"></div>
-      <div>
-        <div class="detail-tag" aria-hidden="true">C</div>
-        <h3>Fan</h3>
-        <p>Fan model with blade geometry and hub, built as a rotating part.</p>
-        <ul class="chips"><li>Part design</li><li>3D CAD</li></ul>
-      </div>
-    </article>
+      <article class="project">
+        <div class="figure" data-img="images/class-1.jpg" data-label="Class project 1"></div>
+        <div>
+          <div class="detail-tag" aria-hidden="true">D</div>
+          <h4>Class project 1</h4>
+          <p>Description coming soon.</p>
+          <ul class="chips"><li>3D CAD</li></ul>
+        </div>
+      </article>
+      <article class="project">
+        <div class="figure" data-img="images/class-2.jpg" data-label="Class project 2"></div>
+        <div>
+          <div class="detail-tag" aria-hidden="true">E</div>
+          <h4>Class project 2</h4>
+          <p>Description coming soon.</p>
+          <ul class="chips"><li>3D CAD</li></ul>
+        </div>
+      </article>
+      <article class="project">
+        <div class="figure" data-img="images/class-3.jpg" data-label="Class project 3"></div>
+        <div>
+          <div class="detail-tag" aria-hidden="true">F</div>
+          <h4>Class project 3</h4>
+          <p>Description coming soon.</p>
+          <ul class="chips"><li>3D CAD</li></ul>
+        </div>
+      </article>
+    </div>
   </section>
 
   <section id="skills">
