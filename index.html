@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Izzy Egan | Mechanical Engineering Portfolio</title>
+<meta name="description" content="Izzy Egan, mechanical engineering student seeking mechanical and automotive engineering internships. CAD work in Siemens NX and SolidWorks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FBFCFD;
+    --ink: #1B2430;
+    --muted: #5B6673;
+    --line: #C9D2DC;
+    --grid: #E8EDF2;
+    --steel: #2F5D8A;
+    --steel-soft: #EAF0F6;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    font-variation-settings: "wdth" 100;
+  }
+  a { color: var(--steel); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--steel); outline-offset: 3px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav { border-bottom: 1px solid var(--line); background: var(--paper); position: sticky; top: 0; z-index: 10; }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+  .mark { font-weight: 700; font-variation-settings: "wdth" 115; text-decoration: none; color: var(--ink); letter-spacing: .01em; }
+  nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
+  nav ul a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  nav ul a:hover { color: var(--ink); }
+
+  /* Hero: a drawing sheet */
+  .sheet {
+    margin: 48px 0 0;
+    border: 1.5px solid var(--ink);
+    position: relative;
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+    padding: 72px 48px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+  }
+  .sheet::before {
+    content: ""; position: absolute; inset: 8px; border: 1px solid var(--line); pointer-events: none;
+  }
+  h1 {
+    font-size: clamp(56px, 11vw, 128px);
+    line-height: .9;
+    margin: 0 0 24px;
+    font-weight: 800;
+    font-variation-settings: "wdth" 120;
+    letter-spacing: -.02em;
+  }
+  .lede { font-size: 20px; max-width: 34ch; margin: 0; color: var(--ink); }
+  .lede span { color: var(--muted); }
+
+  .titleblock {
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+    font-size: 14px;
+    min-width: 280px;
+    border-collapse: collapse;
+    position: relative;
+  }
+  .titleblock th, .titleblock td { border: 1px solid var(--ink); padding: 8px 12px; text-align: left; vertical-align: top; }
+  .titleblock th { font-weight: 500; color: var(--muted); width: 92px; font-size: 13px; }
+  .titleblock td { font-weight: 600; }
+
+  .actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 11px 20px; text-decoration: none; font-weight: 600; font-size: 15px;
+    border: 1.5px solid var(--ink); color: var(--ink); background: var(--paper);
+  }
+  .btn.primary { background: var(--steel); border-color: var(--steel); color: #fff; }
+  .btn:hover { background: var(--steel-soft); }
+  .btn.primary:hover { background: #244a70; }
+
+  /* Sections */
+  section { padding: 96px 0 0; }
+  h2 {
+    font-size: 36px; font-weight: 700; font-variation-settings: "wdth" 115;
+    margin: 0 0 8px; letter-spacing: -.01em;
+  }
+  .sub { color: var(--muted); margin: 0 0 40px; max-width: 60ch; }
+
+  /* Projects as drawing details */
+  .project {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center;
+    padding: 40px 0; border-top: 1px solid var(--line);
+  }
+  .project:last-child { border-bottom: 1px solid var(--line); }
+  .project:nth-child(even) .figure { order: 2; }
+  .figure {
+    aspect-ratio: 4 / 3; border: 1px solid var(--ink); background: #fff; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .figure .placeholder { text-align: center; color: var(--muted); font-size: 14px; padding: 16px; }
+  .figure .placeholder svg { display: block; margin: 0 auto 12px; }
+  .detail-tag {
+    display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px;
+    border: 1.5px solid var(--ink); border-radius: 50%; font-weight: 700; font-size: 14px; margin-bottom: 16px;
+  }
+  .project h3 { font-size: 26px; margin: 0 0 10px; font-variation-settings: "wdth" 110; }
+  .project p { margin: 0 0 16px; color: var(--muted); max-width: 46ch; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; padding: 0; margin: 0; list-style: none; }
+  .chips li { font-size: 13px; padding: 4px 10px; background: var(--steel-soft); color: var(--steel); font-weight: 600; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1.5px solid var(--ink); }
+  .skill { padding: 24px 24px 24px 0; border-bottom: 1px solid var(--line); }
+  .skill + .skill { padding-left: 24px; border-left: 1px solid var(--line); }
+  .skill h3 { margin: 0 0 6px; font-size: 20px; }
+  .skill p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* Contact */
+  .contact { padding-bottom: 96px; }
+  .contact-row { display: flex; gap: 48px; flex-wrap: wrap; }
+  .contact-row div { min-width: 220px; }
+  .contact-row small { display: block; color: var(--muted); font-size: 14px; margin-bottom: 4px; }
+  .contact-row a { font-size: 20px; font-weight: 600; text-decoration-thickness: 1px; text-underline-offset: 4px; word-break: break-word; }
+
+  footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 760px) {
+    nav ul { gap: 18px; }
+    .sheet { grid-template-columns: 1fr; padding: 56px 24px 24px; margin-top: 24px; }
+    .titleblock { min-width: 0; width: 100%; }
+    .project { grid-template-columns: 1fr; gap: 24px; }
+    .project:nth-child(even) .figure { order: 0; }
+    .skills { grid-template-columns: 1fr; }
+    .skill + .skill { padding-left: 0; border-left: 0; }
+    section { padding-top: 72px; }
+  }
+  @media (max-width: 420px) { nav ul li:first-child { display: none; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top">Izzy Egan</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="sheet">
+    <div>
+      <h1>Izzy<br>Egan</h1>
+      <p class="lede">Mechanical engineering student <span>designing engines, housings and rotating parts in CAD.</span></p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="mailto:izzy15963@gmail.com">Email me</a>
+      </div>
+    </div>
+    <table class="titleblock" aria-label="Summary">
+      <tr><th scope="row">Name</th><td>Isabelle (Izzy) Egan</td></tr>
+      <tr><th scope="row">Discipline</th><td>Mechanical Engineering</td></tr>
+      <tr><th scope="row">Seeking</th><td>Mechanical / automotive internship</td></tr>
+      <tr><th scope="row">CAD</th><td>Siemens NX, SolidWorks</td></tr>
+    </table>
+  </header>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p class="sub">Selected CAD work. Each project is modeled from the ground up in Siemens NX or SolidWorks.</p>
+
+    <article class="project">
+      <div class="figure" data-img="images/engine.jpg" data-label="Engine"></div>
+      <div>
+        <div class="detail-tag" aria-hidden="true">A</div>
+        <h3>Engine</h3>
+        <p>Full engine assembly modeled in CAD, from individual components to the complete assembly.</p>
+        <ul class="chips"><li>Assembly</li><li>3D CAD</li></ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="figure" data-img="images/bell-housing.jpg" data-label="Bell housing"></div>
+      <div>
+        <div class="detail-tag" aria-hidden="true">B</div>
+        <h3>Bell housing</h3>
+        <p>Bell housing connecting the engine to the transmission, designed around mounting and clearance requirements.</p>
+        <ul class="chips"><li>Part design</li><li>3D CAD</li></ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="figure" data-img="images/fan.jpg" data-label="Fan"></div>
+      <div>
+        <div class="detail-tag" aria-hidden="true">C</div>
+        <h3>Fan</h3>
+        <p>Fan model with blade geometry and hub, built as a rotating part.</p>
+        <ul class="chips"><li>Part design</li><li>3D CAD</li></ul>
+      </div>
+    </article>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="sub">Software I use for design and analysis.</p>
+    <div class="skills">
+      <div class="skill"><h3>Siemens NX</h3><p>3D part modeling, assemblies and drawings.</p></div>
+      <div class="skill"><h3>SolidWorks</h3><p>Parametric part and assembly design.</p></div>
+      <div class="skill"><h3>Excel</h3><p>Engineering calculations and data analysis.</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p class="sub">I'm looking for mechanical and automotive engineering internships. I'd be glad to hear from you.</p>
+    <div class="contact-row">
+      <div><small>Email</small><a href="mailto:izzy15963@gmail.com">izzy15963@gmail.com</a></div>
+      <div><small>LinkedIn</small><a href="https://www.linkedin.com/in/isabelle-egan-b2a691382/" target="_blank" rel="noopener">Isabelle Egan</a></div>
+      <div><small>GitHub</small><a href="https://github.com/IzzyyEgan28" target="_blank" rel="noopener">IzzyyEgan28</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Izzy Egan</div>
+</footer>
+
+<script>
+  // Show the project image if it exists in /images, otherwise a labeled placeholder.
+  document.querySelectorAll('.figure').forEach(fig => {
+    const label = fig.dataset.label;
+    const img = new Image();
+    img.alt = label + ' CAD model';
+    img.onload = () => { fig.innerHTML = ''; fig.appendChild(img); };
+    img.onerror = () => {
+      fig.innerHTML = '<div class="placeholder"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#5B6673" stroke-width="1.5" aria-hidden="true"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="6"/><path d="M32 4v12M32 48v12M4 32h12M48 32h12"/></svg>' + label + ' render coming soon</div>';
+    };
+    img.src = fig.dataset.img;
+  });
+</script>
+</body>
+</html>
