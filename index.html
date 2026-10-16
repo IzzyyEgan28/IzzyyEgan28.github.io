@@ -19,6 +19,7 @@
     --steel-soft: #EAF0F6;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
@@ -102,7 +103,7 @@
 
   /* Projects as drawing details */
   .group { margin-top: 56px; }
-  .group:first-of-type { margin-top: 0; }
+  .group:first-of-type, .group[hidden] + .group { margin-top: 0; }
   .group-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; border-bottom: 1.5px solid var(--ink); }
   .group-head h3 { font-size: 24px; margin: 0; font-variation-settings: "wdth" 112; }
   .group-head p { margin: 0; color: var(--muted); font-size: 15px; }
@@ -203,9 +204,10 @@
 
   <section id="projects">
     <h2>Projects</h2>
-    <p class="sub">CAD work from the solar car team and my mechanical engineering courses, modeled in Siemens NX and SolidWorks.</p>
+    <p class="sub">Selected hand drafting and CAD work.</p>
 
-    <div class="group" id="solar">
+    <!-- Solar team group is hidden until it has projects. Remove "hidden" to show it. -->
+    <div class="group" id="solar" hidden>
       <div class="group-head">
         <h3>Solar car team</h3>
         <p>Parts designed for a working solar-powered vehicle.</p>
@@ -247,7 +249,7 @@
       <article class="project">
         <div class="figure drawing" data-img="images/engine-block-sketch.jpg" data-label="Inline three-cylinder engine block drawing"></div>
         <div>
-          <div class="detail-tag" aria-hidden="true">D</div>
+          <div class="detail-tag" aria-hidden="true">A</div>
           <h4>Inline three-cylinder engine block drawing</h4>
           <p>A hand-drafted multiview drawing of an inline three-cylinder engine block. Using third-angle orthographic projection, I developed top and front views that define the cylinder bores, crankshaft and main bearing locations, and the ports on top of the block. An isometric sketch shows the overall form, and center and dimension lines lay out the geometry for a CAD model.</p>
           <ul class="chips"><li>Hand drafting</li><li>Orthographic projection</li><li>Isometric sketching</li></ul>
@@ -263,13 +265,14 @@
           </div>
         </div>
         <div>
-          <div class="detail-tag" aria-hidden="true">E</div>
+          <div class="detail-tag" aria-hidden="true">B</div>
           <h4>Gearbox assembly and drawing</h4>
           <p>A gearbox assembly modeled in Siemens NX. I built the housing, base, end covers and inspection cover, along with the internal gears, shafts and bearings, as separate parts and joined them with assembly constraints. From the model, I produced a matching drawing with top, front and side views, an isometric view and key dimensions.</p>
           <ul class="chips"><li>Siemens NX</li><li>Assembly constraints</li><li>Drafting</li></ul>
         </div>
       </article>
-      <article class="project">
+      <!-- Empty slot, hidden until a project is added. -->
+      <article class="project" hidden>
         <div class="figure" data-img="images/class-3.jpg" data-label="Class project 3"></div>
         <div>
           <div class="detail-tag" aria-hidden="true">F</div>
