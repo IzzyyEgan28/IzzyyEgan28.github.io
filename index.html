@@ -118,6 +118,9 @@
     display: flex; align-items: center; justify-content: center;
   }
   .figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .figure.drawing img { object-fit: contain; padding: 8px; background: #fff; }
+  .figure a { display: block; width: 100%; height: 100%; }
+  .zoom-hint { margin: 10px 0 0; font-size: 14px; }
   .figure .placeholder { text-align: center; color: var(--muted); font-size: 14px; padding: 16px; }
   .figure .placeholder svg { display: block; margin: 0 auto 12px; }
   .detail-tag {
@@ -236,12 +239,12 @@
         <p>Design work from mechanical engineering courses at Michigan State.</p>
       </div>
       <article class="project">
-        <div class="figure" data-img="images/class-1.jpg" data-label="Class project 1"></div>
+        <div class="figure drawing" data-img="images/engine-block-sketch.jpg" data-label="Engine block hand drawing"></div>
         <div>
           <div class="detail-tag" aria-hidden="true">D</div>
-          <h4>Class project 1</h4>
-          <p>Description coming soon.</p>
-          <ul class="chips"><li>3D CAD</li></ul>
+          <h4>Engine block</h4>
+          <p>Hand-drafted three-cylinder engine block, laid out in a top view, a front view and an isometric sketch before modeling. The drawing places the three cylinder bores, the crankshaft and its main bearings, and the ports on top of the block.</p>
+          <ul class="chips"><li>Hand drafting</li><li>Orthographic views</li><li>Isometric sketch</li></ul>
         </div>
       </article>
       <article class="project">
@@ -296,7 +299,17 @@
     const label = fig.dataset.label;
     const img = new Image();
     img.alt = label + ' CAD model';
-    img.onload = () => { fig.innerHTML = ''; fig.appendChild(img); };
+    img.onload = () => {
+      const a = document.createElement('a');
+      a.href = img.src; a.target = '_blank'; a.rel = 'noopener';
+      a.setAttribute('aria-label', 'Open full-size ' + label);
+      a.appendChild(img);
+      fig.innerHTML = ''; fig.appendChild(a);
+      const hint = document.createElement('p');
+      hint.className = 'zoom-hint';
+      hint.innerHTML = '<a href="' + img.src + '" target="_blank" rel="noopener">View full size</a>';
+      fig.nextElementSibling.querySelector('.chips').after(hint);
+    };
     img.onerror = () => {
       fig.innerHTML = '<div class="placeholder"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#5B6673" stroke-width="1.5" aria-hidden="true"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="6"/><path d="M32 4v12M32 48v12M4 32h12M48 32h12"/></svg>' + label + ' render coming soon</div>';
     };
