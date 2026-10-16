@@ -112,7 +112,7 @@
     padding: 40px 0; border-top: 1px solid var(--line);
   }
   .project:last-child { border-bottom: 1px solid var(--line); }
-  .project:nth-of-type(even) .figure { order: 2; }
+  .project:nth-of-type(even) > .figure, .project:nth-of-type(even) > .gallery { order: 2; }
   .figure {
     aspect-ratio: 4 / 3; border: 1px solid var(--ink); background: #fff; position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
@@ -121,6 +121,12 @@
   .figure.drawing img { object-fit: contain; padding: 8px; background: #fff; }
   .figure a { display: block; width: 100%; height: 100%; }
   .zoom-hint { margin: 10px 0 0; font-size: 14px; }
+  .gallery .figure { background: #fff; }
+  .gallery .figure img { object-fit: contain; }
+  .views { display: flex; gap: 0; margin-top: 10px; border: 1px solid var(--ink); width: fit-content; max-width: 100%; flex-wrap: wrap; }
+  .views button { font: inherit; font-size: 14px; font-weight: 600; padding: 7px 14px; border: 0; background: var(--paper); color: var(--ink); cursor: pointer; }
+  .views button + button { border-left: 1px solid var(--ink); }
+  .views button[aria-pressed="true"] { background: var(--ink); color: #fff; }
   .figure .placeholder { text-align: center; color: var(--muted); font-size: 14px; padding: 16px; }
   .figure .placeholder svg { display: block; margin: 0 auto 12px; }
   .detail-tag {
@@ -153,7 +159,7 @@
     .sheet { grid-template-columns: 1fr; padding: 56px 24px 24px; margin-top: 24px; }
     .titleblock { min-width: 0; width: 100%; }
     .project { grid-template-columns: 1fr; gap: 24px; }
-    .project:nth-of-type(even) .figure { order: 0; }
+    .project:nth-of-type(even) > .figure, .project:nth-of-type(even) > .gallery { order: 0; }
     .skills { grid-template-columns: 1fr; }
     .skill + .skill { padding-left: 0; border-left: 0; }
     section { padding-top: 72px; }
@@ -248,12 +254,19 @@
         </div>
       </article>
       <article class="project">
-        <div class="figure" data-img="images/class-2.jpg" data-label="Class project 2"></div>
+        <div class="gallery">
+          <div class="figure" data-img="images/gearbox-model.jpg" data-label="Gearbox assembly 3D model"></div>
+          <div class="views" role="group" aria-label="Choose view">
+            <button type="button" aria-pressed="true" data-src="images/gearbox-model.jpg" data-alt="Gearbox assembly 3D model">3D model</button>
+            <button type="button" aria-pressed="false" data-src="images/gearbox-drawing.jpg" data-alt="Gearbox assembly drawing" data-drawing>Drawing</button>
+            <button type="button" aria-pressed="false" data-src="images/gearbox-nx.jpg" data-alt="Gearbox assembly open in Siemens NX">In Siemens NX</button>
+          </div>
+        </div>
         <div>
           <div class="detail-tag" aria-hidden="true">E</div>
-          <h4>Class project 2</h4>
-          <p>Description coming soon.</p>
-          <ul class="chips"><li>3D CAD</li></ul>
+          <h4>Gearbox assembly and drawing</h4>
+          <p>A gearbox assembly modeled in Siemens NX. I built the housing, base, end covers, inspection cover and shafts as separate parts and joined them with assembly constraints. From the model, I produced a matching drawing with top, front and side views, an isometric view and key dimensions.</p>
+          <ul class="chips"><li>Siemens NX</li><li>Assembly constraints</li><li>Drafting</li></ul>
         </div>
       </article>
       <article class="project">
@@ -300,6 +313,7 @@
     const img = new Image();
     img.alt = label + ' CAD model';
     img.onload = () => {
+      img.onload = null;
       const a = document.createElement('a');
       a.href = img.src; a.target = '_blank'; a.rel = 'noopener';
       a.setAttribute('aria-label', 'Open full-size ' + label);
@@ -308,12 +322,26 @@
       const hint = document.createElement('p');
       hint.className = 'zoom-hint';
       hint.innerHTML = '<a href="' + img.src + '" target="_blank" rel="noopener">View full size</a>';
-      fig.nextElementSibling.querySelector('.chips').after(hint);
+      fig.closest('.project').querySelector('.chips').after(hint); fig._hint = hint;
     };
     img.onerror = () => {
       fig.innerHTML = '<div class="placeholder"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#5B6673" stroke-width="1.5" aria-hidden="true"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="6"/><path d="M32 4v12M32 48v12M4 32h12M48 32h12"/></svg>' + label + ' render coming soon</div>';
     };
     img.src = fig.dataset.img;
+  });
+
+  // View switcher for projects with several images
+  document.querySelectorAll('.gallery').forEach(g => {
+    const fig = g.querySelector('.figure');
+    g.querySelectorAll('.views button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        g.querySelectorAll('.views button').forEach(b => b.setAttribute('aria-pressed', b === btn));
+        const a = fig.querySelector('a'), img = fig.querySelector('img');
+        if (!img) return;
+        img.src = btn.dataset.src; img.alt = btn.dataset.alt; a.href = btn.dataset.src;
+        if (fig._hint) fig._hint.querySelector('a').href = btn.dataset.src;
+      });
+    });
   });
 </script>
 </body>
