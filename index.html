@@ -124,9 +124,8 @@
   .zoom-hint { margin: 10px 0 0; font-size: 14px; }
   .gallery .figure { background: #fff; }
   .gallery .figure img { object-fit: contain; }
-  .views { display: flex; gap: 0; margin-top: 10px; border: 1px solid var(--ink); width: fit-content; max-width: 100%; flex-wrap: wrap; }
+  .views { display: flex; gap: 1px; margin-top: 10px; border: 1px solid var(--ink); background: var(--ink); width: fit-content; max-width: 100%; }
   .views button { font: inherit; font-size: 14px; font-weight: 600; padding: 7px 14px; border: 0; background: var(--paper); color: var(--ink); cursor: pointer; }
-  .views button + button { border-left: 1px solid var(--ink); }
   .views button[aria-pressed="true"] { background: var(--ink); color: #fff; }
   .figure .placeholder { text-align: center; color: var(--muted); font-size: 14px; padding: 16px; }
   .figure .placeholder svg { display: block; margin: 0 auto 12px; }
@@ -156,6 +155,8 @@
   footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: 14px; }
 
   @media (max-width: 760px) {
+    .views { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+    .views button:last-child:nth-child(odd) { grid-column: span 2; }
     nav ul { gap: 18px; }
     .sheet { grid-template-columns: 1fr; padding: 56px 24px 24px; margin-top: 24px; }
     .titleblock { min-width: 0; width: 100%; }
@@ -230,12 +231,20 @@
       </article>
 
       <article class="project">
-        <div class="figure drawing" data-img="images/engine-block-sketch.jpg" data-label="Inline three-cylinder engine block draft"></div>
+        <div class="gallery">
+          <div class="figure" data-img="images/engine-model.jpg" data-label="Inline three-cylinder engine assembly 3D model"></div>
+          <div class="views" role="group" aria-label="Choose view">
+            <button type="button" aria-pressed="true" data-src="images/engine-model.jpg" data-alt="Inline three-cylinder engine assembly 3D model">3D model</button>
+            <button type="button" aria-pressed="false" data-src="images/engine-draft.jpg" data-alt="Engine assembly draft with section C-C">Draft</button>
+            <button type="button" aria-pressed="false" data-src="images/engine-block-sketch.jpg" data-alt="Hand-drafted engine block sketch">Hand sketch</button>
+            <button type="button" aria-pressed="false" data-src="images/engine-nx.jpg" data-alt="Engine assembly open in Siemens NX">In Siemens NX</button>
+          </div>
+        </div>
         <div>
           <div class="detail-tag" aria-hidden="true">B</div>
-          <h4>Inline three-cylinder engine block draft</h4>
-          <p>A hand-drafted multiview draft of an inline three-cylinder engine block. Using third-angle orthographic projection, I developed top and front views that define the cylinder bores, crankshaft and main bearing locations, and the ports on top of the block. An isometric sketch shows the overall form, and center and dimension lines lay out the geometry for a CAD model.</p>
-          <ul class="chips"><li>Hand drafting</li><li>Orthographic projection</li><li>Isometric sketching</li></ul>
+          <h4>Inline three-cylinder engine assembly and draft</h4>
+          <p>An inline three-cylinder engine assembly modeled in Siemens NX. I built the engine block, crankshaft, connecting rods, pistons and piston pins as separate parts, then joined them with touch, align and center constraints so the crank, rods and pistons line up as a working mechanism. I started with a hand-drafted multiview sketch, then produced a full NX draft with top and front views, a section (C-C) through a cylinder showing the piston and connecting rod, an isometric view and key dimensions in inches.</p>
+          <ul class="chips"><li>Siemens NX</li><li>Assembly constraints</li><li>Section views</li><li>Hand drafting</li></ul>
         </div>
       </article>
       <article class="project">
