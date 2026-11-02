@@ -145,6 +145,17 @@
   .skill h3 { margin: 0 0 6px; font-size: 20px; }
   .skill p { margin: 0; color: var(--muted); font-size: 15px; }
 
+  /* Artwork */
+  .art-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 24px; margin: 0; padding: 0; list-style: none; }
+  .art-grid figure { margin: 0; }
+  .art-grid a { display: block; border: 1px solid var(--ink); background: #fff; aspect-ratio: 4 / 5; overflow: hidden; }
+  .art-grid img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 10px; }
+  .art-grid figcaption { margin-top: 10px; font-size: 15px; }
+  .art-grid figcaption b { display: block; font-weight: 600; }
+  .art-grid figcaption span { color: var(--muted); font-size: 14px; }
+  @media (max-width: 760px) { .art-grid { grid-template-columns: 1fr 1fr; gap: 24px 16px; } }
+  @media (max-width: 420px) { .art-grid { grid-template-columns: 1fr; } }
+
   /* Contact */
   .contact { padding-bottom: 96px; }
   .contact-row { display: flex; gap: 48px; flex-wrap: wrap; }
@@ -327,6 +338,14 @@
       <div class="skill"><h3>ANSYS Workbench</h3><p>Engineering simulation and finite element analysis.</p></div>
       <div class="skill"><h3>Excel</h3><p>Engineering calculations and data analysis.</p></div>
     </div>
+  </section>
+
+  <!-- Artwork section: hidden until drawings are added. -->
+  <section id="artwork" hidden>
+    <h2>Artwork</h2>
+    <p class="sub">Personal drawings, all done by hand.</p>
+    <ul class="art-grid">
+    </ul>
   </section>
 
   <section id="contact" class="contact">
