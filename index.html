@@ -148,8 +148,8 @@
   /* Artwork */
   .art-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 24px; margin: 0; padding: 0; list-style: none; }
   .art-grid figure { margin: 0; }
-  .art-grid a { display: block; border: 1px solid var(--ink); background: #fff; aspect-ratio: 4 / 5; overflow: hidden; }
-  .art-grid img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 10px; }
+  .art-grid a { display: block; border: 1px solid var(--ink); background: #fff; aspect-ratio: 4 / 3; overflow: hidden; }
+  .art-grid img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 6px; }
   .art-grid figcaption { margin-top: 10px; font-size: 15px; }
   .art-grid figcaption b { display: block; font-weight: 600; }
   .art-grid figcaption span { color: var(--muted); font-size: 14px; }
@@ -177,7 +177,7 @@
     .skill + .skill { padding-left: 0; border-left: 0; }
     section { padding-top: 72px; }
   }
-  @media (max-width: 420px) { nav ul li:first-child { display: none; } }
+  @media (max-width: 480px) { nav ul { gap: 14px; } nav ul a { font-size: 14px; } nav ul li:first-child { display: none; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
@@ -189,6 +189,7 @@
     <ul>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#artwork">Artwork</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -340,11 +341,30 @@
     </div>
   </section>
 
-  <!-- Artwork section: hidden until drawings are added. -->
-  <section id="artwork" hidden>
+  <section id="artwork">
     <h2>Artwork</h2>
-    <p class="sub">Personal drawings, all done by hand.</p>
+    <p class="sub">Personal drawings of cars, all done by hand in pencil.</p>
     <ul class="art-grid">
+      <li><figure>
+        <a href="images/art/mazda.jpg" target="_blank" rel="noopener" aria-label="Open full-size drawing: Mazda CX-5"><img src="images/art/mazda.jpg" alt="Hand-drawn pencil drawing of a Mazda CX-5" loading="lazy"></a>
+        <figcaption><b>Mazda CX-5</b><span>Graphite pencil, fully shaded</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a href="images/art/corvette.jpg" target="_blank" rel="noopener" aria-label="Open full-size drawing: Chevrolet Corvette"><img src="images/art/corvette.jpg" alt="Hand-drawn pencil drawing of a Chevrolet Corvette" loading="lazy"></a>
+        <figcaption><b>Chevrolet Corvette</b><span>Graphite pencil, fully shaded</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a href="images/art/jeep.jpg" target="_blank" rel="noopener" aria-label="Open full-size drawing: Jeep Wrangler, off-road build"><img src="images/art/jeep.jpg" alt="Hand-drawn pencil drawing of a Jeep Wrangler, off-road build" loading="lazy"></a>
+        <figcaption><b>Jeep Wrangler, off-road build</b><span>Graphite pencil</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a href="images/art/bmw.jpg" target="_blank" rel="noopener" aria-label="Open full-size drawing: BMW sedan"><img src="images/art/bmw.jpg" alt="Hand-drawn pencil drawing of a BMW sedan" loading="lazy"></a>
+        <figcaption><b>BMW sedan</b><span>Pencil sketch</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a href="images/art/f1.jpg" target="_blank" rel="noopener" aria-label="Open full-size drawing: Formula 1 car"><img src="images/art/f1.jpg" alt="Hand-drawn pencil drawing of a Formula 1 car" loading="lazy"></a>
+        <figcaption><b>Formula 1 car</b><span>Pencil sketch</span></figcaption>
+      </figure></li>
     </ul>
   </section>
 
