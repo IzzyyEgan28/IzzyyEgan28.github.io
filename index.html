@@ -17,6 +17,7 @@
     --grid: #E8EDF2;
     --steel: #2F5D8A;
     --steel-soft: #EAF0F6;
+    --tray: #F1F4F7;
   }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
@@ -119,7 +120,7 @@
     display: flex; align-items: center; justify-content: center;
   }
   .figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .figure.drawing img { object-fit: contain; padding: 8px; background: #fff; }
+
   .figure a { display: block; width: 100%; height: 100%; }
   .zoom-hint { margin: 10px 0 0; font-size: 14px; }
   .gallery .figure { background: #fff; }
@@ -165,6 +166,47 @@
 
   footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: 14px; }
 
+
+  /* Polish pass */
+  .figure { border: 1px solid var(--line); background: #fff; }
+  .figure img, .gallery .figure img { object-fit: contain; padding: 18px; mix-blend-mode: multiply; }
+  .figure a { position: relative; }
+  .expand { position: absolute; right: 10px; bottom: 10px; width: 32px; height: 32px; display: grid; place-items: center;
+            background: var(--paper); border: 1px solid var(--line); color: var(--ink); }
+  .figure a:hover .expand, .figure a:focus-visible .expand { border-color: var(--ink); }
+  .views { border-color: var(--line); background: var(--line); }
+  .views button { color: var(--muted); }
+  .views button:hover { color: var(--ink); }
+  .views button[aria-pressed="true"] { background: var(--steel); color: #fff; }
+  .project { padding: 56px 0; gap: 48px; }
+  .project h4 { font-size: 25px; line-height: 1.25; margin: 0 0 12px; }
+  .project p { color: var(--muted); }
+  .chips li { background: var(--tray); color: var(--ink); font-weight: 500; border: 1px solid var(--line); }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin: 4px 0 20px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stats div { padding: 12px 12px 12px 0; }
+  .stats div + div { padding-left: 14px; border-left: 1px solid var(--line); }
+  .stats dt { font-size: 13px; color: var(--muted); line-height: 1.35; order: 2; }
+  .stats dd { margin: 0 0 2px; font-size: 24px; font-weight: 700; font-variation-settings: "wdth" 110; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .stats div { display: flex; flex-direction: column; }
+  .stats dd { order: 1; }
+
+  .overview { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin: 0 0 72px; padding: 0; list-style: none; }
+  .overview a { display: block; text-decoration: none; color: var(--ink); }
+  .overview .thumb { aspect-ratio: 4 / 3; border: 1px solid var(--line); background: #fff; display: block; }
+  .overview .thumb img { width: 100%; height: 100%; object-fit: contain; padding: 10px; mix-blend-mode: multiply; display: block; }
+  .overview a:hover .thumb, .overview a:focus-visible .thumb { border-color: var(--ink); }
+  .overview b { display: block; font-size: 15px; font-weight: 600; margin-top: 8px; line-height: 1.3; }
+  .overview span { display: block; font-size: 13px; color: var(--muted); }
+  .project { scroll-margin-top: 72px; }
+
+  .art-grid a { border-color: var(--line); background: #fff; }
+  .art-grid img { mix-blend-mode: multiply; }
+  .art-grid a:hover { border-color: var(--ink); }
+
+  @media (max-width: 900px) { .overview { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 520px) { .overview { grid-template-columns: repeat(2, 1fr); } .stats dd { font-size: 20px; } }
+
   @media (max-width: 760px) {
     .views { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
     .views button:last-child:nth-child(odd) { grid-column: span 2; }
@@ -206,10 +248,8 @@
       </div>
     </div>
     <table class="titleblock" aria-label="Summary">
-      <tr><th scope="row">Name</th><td>Isabelle Egan</td></tr>
       <tr><th scope="row">School</th><td>Michigan State University</td></tr>
       <tr><th scope="row">Class of</th><td>2028</td></tr>
-      <tr><th scope="row">Discipline</th><td>Mechanical Engineering</td></tr>
       <tr><th scope="row">Seeking</th><td>Summer 2027 internship</td></tr>
       <tr><th scope="row">CAD</th><td>Siemens NX, SolidWorks</td></tr>
       <tr><th scope="row">Analysis</th><td>ANSYS Workbench</td></tr>
@@ -219,13 +259,21 @@
   <section id="projects">
     <h2>Projects</h2>
     <p class="sub">Selected hand drafting and CAD work.</p>
+    <ul class="overview">
+      <li><a href="#p-bearing"><span class="thumb"><img src="images/bearing-model.jpg" alt="" loading="lazy"></span><b>Ball bearing</b><span>Class project</span></a></li>
+      <li><a href="#p-engine"><span class="thumb"><img src="images/engine-model.jpg" alt="" loading="lazy"></span><b>Three-cylinder engine</b><span>Class project</span></a></li>
+      <li><a href="#p-gearbox"><span class="thumb"><img src="images/gearbox-model.jpg" alt="" loading="lazy"></span><b>Gearbox</b><span>Class project</span></a></li>
+      <li><a href="#p-table"><span class="thumb"><img src="images/solar-table-model.jpg" alt="" loading="lazy"></span><b>Table frame and FEA</b><span>Solar car team</span></a></li>
+      <li><a href="#p-ratchet"><span class="thumb"><img src="images/solar-wheel-model.jpg" alt="" loading="lazy"></span><b>Ratchet wheel</b><span>Solar car team</span></a></li>
+    </ul>
+
 
     <div class="group" id="class">
       <div class="group-head">
         <h3>Class projects</h3>
         <p>Design work from mechanical engineering courses at Michigan State.</p>
       </div>
-      <article class="project">
+      <article class="project" id="p-bearing">
         <div class="gallery">
           <div class="figure" data-img="images/bearing-model.jpg" data-label="Deep groove ball bearing 3D model"></div>
           <div class="views" role="group" aria-label="Choose view">
@@ -235,14 +283,14 @@
           </div>
         </div>
         <div>
-          <div class="detail-tag" aria-hidden="true">A</div>
           <h4>Ball bearing assembly and draft</h4>
           <p>A complete ball bearing that I modeled and assembled from scratch in Siemens NX. I designed the inner ring, outer ring and ball as separate parts, then used fix, concentric, align and distance constraints and a circular pattern to place 16 balls evenly around the raceway. I also produced a full-size A3 draft with a sectioned view (B-B) that shows the ball seats, the 72.5 mm outer diameter, the 12.5 mm width and the chamfers on both faces.</p>
+          <dl class="stats"><div><dt>balls in a circular pattern</dt><dd>16</dd></div><div><dt>outer diameter</dt><dd>72.5 mm</dd></div><div><dt>width</dt><dd>12.5 mm</dd></div></dl>
           <ul class="chips"><li>Siemens NX</li><li>Assembly constraints</li><li>Section views</li><li>Drafting</li></ul>
         </div>
       </article>
 
-      <article class="project">
+      <article class="project" id="p-engine">
         <div class="gallery">
           <div class="figure" data-img="images/engine-model.jpg" data-label="Inline three-cylinder engine assembly 3D model"></div>
           <div class="views" role="group" aria-label="Choose view">
@@ -253,13 +301,12 @@
           </div>
         </div>
         <div>
-          <div class="detail-tag" aria-hidden="true">B</div>
           <h4>Inline three-cylinder engine assembly and draft</h4>
           <p>An inline three-cylinder engine assembly modeled in Siemens NX. I built the engine block, crankshaft, connecting rods, pistons and piston pins as separate parts, then joined them with touch, align and center constraints so the crank, rods and pistons line up as a working mechanism. I started with a hand-drafted multiview sketch, then produced a full NX draft with top and front views, a section (C-C) through a cylinder showing the piston and connecting rod, an isometric view and key dimensions in inches.</p>
           <ul class="chips"><li>Siemens NX</li><li>Assembly constraints</li><li>Section views</li><li>Hand drafting</li></ul>
         </div>
       </article>
-      <article class="project">
+      <article class="project" id="p-gearbox">
         <div class="gallery">
           <div class="figure" data-img="images/gearbox-model.jpg" data-label="Gearbox assembly 3D model"></div>
           <div class="views" role="group" aria-label="Choose view">
@@ -269,7 +316,6 @@
           </div>
         </div>
         <div>
-          <div class="detail-tag" aria-hidden="true">C</div>
           <h4>Gearbox assembly and draft</h4>
           <p>A gearbox assembly modeled in Siemens NX. I built the housing, base, end covers and inspection cover, along with the internal gears, shafts and bearings, as separate parts and joined them with assembly constraints. From the model, I produced a matching draft with top, front and side views, an isometric view and key dimensions.</p>
           <ul class="chips"><li>Siemens NX</li><li>Assembly constraints</li><li>Drafting</li></ul>
@@ -279,7 +325,6 @@
       <article class="project" hidden>
         <div class="figure" data-img="images/class-3.jpg" data-label="Class project 3"></div>
         <div>
-          <div class="detail-tag" aria-hidden="true">F</div>
           <h4>Class project 3</h4>
           <p>Description coming soon.</p>
           <ul class="chips"><li>3D CAD</li></ul>
@@ -291,7 +336,7 @@
         <h3>Solar car team</h3>
         <p>Parts and structures I designed and analyzed for the solar car team.</p>
       </div>
-      <article class="project">
+      <article class="project" id="p-table">
         <div class="gallery">
           <div class="figure" data-img="images/solar-table-model.jpg" data-label="Chromoly steel table frame 3D model"></div>
           <div class="views" role="group" aria-label="Choose view">
@@ -301,14 +346,14 @@
           </div>
         </div>
         <div>
-          <div class="detail-tag" aria-hidden="true">D</div>
           <h4>Chromoly steel table frame with ANSYS analysis</h4>
           <p>A welded chromoly steel table frame I designed for the solar car team, with a goal of keeping it under 150 lb. I modeled the tube frame in SolidWorks using 3D sketching, weldment structural members and extend/trim tools to join the cross-bracing. I then analyzed it in ANSYS Workbench under a 2,500 N load in the X and Z directions and a 6,000 N downward load in Y. The final design weighs 120 lb, 30 lb under the limit, with a minimum factor of safety of 2.23.</p>
+          <dl class="stats"><div><dt>frame weight, under a 150 lb limit</dt><dd>120 lb</dd></div><div><dt>minimum factor of safety</dt><dd>2.23</dd></div><div><dt>vertical load analyzed</dt><dd>6,000 N</dd></div></dl>
           <ul class="chips"><li>SolidWorks weldments</li><li>3D sketching</li><li>ANSYS Workbench</li><li>FEA</li><li>Chromoly steel</li></ul>
         </div>
       </article>
 
-      <article class="project">
+      <article class="project" id="p-ratchet">
         <div class="gallery">
           <div class="figure" data-img="images/solar-wheel-model.jpg" data-label="Ratchet wheel 3D model"></div>
           <div class="views" role="group" aria-label="Choose view">
@@ -317,7 +362,6 @@
           </div>
         </div>
         <div>
-          <div class="detail-tag" aria-hidden="true">E</div>
           <h4>Ratchet wheel for a pedal-operated tire lift</h4>
           <p>A ratchet wheel I designed and modeled from scratch in SolidWorks for the solar car team's tire lift. The lift slides around a single tire and uses a foot pedal ratchet system to raise the wheel off the ground, with no separate floor jack needed. The five angled teeth let the wheel turn in the lifting direction while a pawl locks it in the other, holding the car up between pedal strokes. The stepped center bore mounts it on a shaft. I built the part from sketch-based extrudes and cuts, then added fillets to finish the edges.</p>
           <ul class="chips"><li>SolidWorks</li><li>Part modeling</li><li>Original design</li></ul>
@@ -327,7 +371,6 @@
       <article class="project" hidden>
         <div class="figure" data-img="images/solar-2.jpg" data-label="Solar team project 2"></div>
         <div>
-          <div class="detail-tag" aria-hidden="true">B</div>
           <h4>Solar team project 2</h4>
           <p>Description coming soon.</p>
           <ul class="chips"><li>3D CAD</li></ul>
@@ -337,7 +380,6 @@
       <article class="project" hidden>
         <div class="figure" data-img="images/solar-3.jpg" data-label="Solar team project 3"></div>
         <div>
-          <div class="detail-tag" aria-hidden="true">C</div>
           <h4>Solar team project 3</h4>
           <p>Description coming soon.</p>
           <ul class="chips"><li>3D CAD</li></ul>
@@ -413,10 +455,10 @@
       a.setAttribute('aria-label', 'Open full-size ' + label);
       a.appendChild(img);
       fig.innerHTML = ''; fig.appendChild(a);
-      const hint = document.createElement('p');
-      hint.className = 'zoom-hint';
-      hint.innerHTML = '<a href="' + img.src + '" target="_blank" rel="noopener">View full size</a>';
-      fig.closest('.project').querySelector('.chips').after(hint); fig._hint = hint;
+      const ic = document.createElement('span');
+      ic.className = 'expand'; ic.setAttribute('aria-hidden', 'true');
+      ic.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5 9 7M2.5 13.5 7 9"/></svg>';
+      a.appendChild(ic);
     };
     img.onerror = () => {
       fig.innerHTML = '<div class="placeholder"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#5B6673" stroke-width="1.5" aria-hidden="true"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="6"/><path d="M32 4v12M32 48v12M4 32h12M48 32h12"/></svg>' + label + ' render coming soon</div>';
@@ -433,7 +475,6 @@
         const a = fig.querySelector('a'), img = fig.querySelector('img');
         if (!img) return;
         img.src = btn.dataset.src; img.alt = btn.dataset.alt; a.href = btn.dataset.src;
-        if (fig._hint) fig._hint.querySelector('a').href = btn.dataset.src;
       });
     });
   });
