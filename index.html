@@ -191,7 +191,7 @@
   .stats div { display: flex; flex-direction: column; }
   .stats dd { order: 1; }
 
-  .overview { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin: 0 0 72px; padding: 0; list-style: none; }
+  .overview { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin: 0 0 72px; padding: 0; list-style: none; }
   .overview a { display: block; text-decoration: none; color: var(--ink); }
   .overview .thumb { aspect-ratio: 4 / 3; border: 1px solid var(--line); background: #fff; display: block; }
   .overview .thumb img { width: 100%; height: 100%; object-fit: contain; padding: 10px; mix-blend-mode: multiply; display: block; }
@@ -260,13 +260,87 @@
     <h2>Projects</h2>
     <p class="sub">Selected hand drafting and CAD work.</p>
     <ul class="overview">
+      <li><a href="#p-rollcage"><span class="thumb"><img src="images/rollcage-model.jpg" alt="" loading="lazy"></span><b>Chassis roll cage and FEA</b><span>Solar car team</span></a></li>
+      <li><a href="#p-table"><span class="thumb"><img src="images/solar-table-model.jpg" alt="" loading="lazy"></span><b>Table frame and FEA</b><span>Solar car team</span></a></li>
+      <li><a href="#p-ratchet"><span class="thumb"><img src="images/solar-wheel-model.jpg" alt="" loading="lazy"></span><b>Ratchet wheel</b><span>Solar car team</span></a></li>
       <li><a href="#p-bearing"><span class="thumb"><img src="images/bearing-model.jpg" alt="" loading="lazy"></span><b>Ball bearing</b><span>Class project</span></a></li>
       <li><a href="#p-engine"><span class="thumb"><img src="images/engine-model.jpg" alt="" loading="lazy"></span><b>Three-cylinder engine</b><span>Class project</span></a></li>
       <li><a href="#p-gearbox"><span class="thumb"><img src="images/gearbox-model.jpg" alt="" loading="lazy"></span><b>Gearbox</b><span>Class project</span></a></li>
-      <li><a href="#p-table"><span class="thumb"><img src="images/solar-table-model.jpg" alt="" loading="lazy"></span><b>Table frame and FEA</b><span>Solar car team</span></a></li>
-      <li><a href="#p-ratchet"><span class="thumb"><img src="images/solar-wheel-model.jpg" alt="" loading="lazy"></span><b>Ratchet wheel</b><span>Solar car team</span></a></li>
     </ul>
 
+
+    <div class="group" id="solar">
+      <div class="group-head">
+        <h3>Solar car team</h3>
+        <p>Parts and structures I designed and analyzed for the solar car team.</p>
+      </div>
+      <article class="project" id="p-rollcage">
+        <div class="gallery">
+          <div class="figure" data-img="images/rollcage-model.jpg" data-label="Aluminum tube roll cage 3D model"></div>
+          <div class="views" role="group" aria-label="Choose view">
+            <button type="button" aria-pressed="true" data-src="images/rollcage-model.jpg" data-alt="Aluminum tube roll cage 3D model">3D model</button>
+            <button type="button" aria-pressed="false" data-src="images/rollcage-ansys.jpg" data-alt="ANSYS safety factor results for the roll cage">ANSYS safety factor</button>
+            <button type="button" aria-pressed="false" data-src="images/rollcage-solidworks.jpg" data-alt="Roll cage open in SolidWorks with its feature tree">In SolidWorks</button>
+            <button type="button" aria-pressed="false" data-src="images/rollcage-ansys-full.jpg" data-alt="Roll cage static structural study open in ANSYS Mechanical">In ANSYS</button>
+          </div>
+        </div>
+        <div>
+          <h4>Chassis roll cage with ANSYS analysis</h4>
+          <p>A tube-frame roll cage I designed in SolidWorks for the car's chassis, now on revision 3.5. I laid out the frame with 3D sketches, built it from round and square aluminum tubing as weldment members, trimmed and extended every joint, and added gussets plus mounts and jigs for the shocks, trailing arms and motor controller. I then ran a static structural study of the full cage in ANSYS Workbench and added knee braces to bring the whole cage up to the required factor of safety. The one low reading in the results (0.83) sits at the feet, where the model is cut off. In the car those tube ends attach to the rest of the chassis, so they don't count toward the cage's safety factor.</p>
+          <ul class="chips"><li>SolidWorks weldments</li><li>3D sketching</li><li>ANSYS Mechanical</li><li>FEA</li><li>Aluminum tubing</li></ul>
+        </div>
+      </article>
+
+      <article class="project" id="p-table">
+        <div class="gallery">
+          <div class="figure" data-img="images/solar-table-model.jpg" data-label="Chromoly steel table frame 3D model"></div>
+          <div class="views" role="group" aria-label="Choose view">
+            <button type="button" aria-pressed="true" data-src="images/solar-table-model.jpg" data-alt="Chromoly steel table frame 3D model">3D model</button>
+            <button type="button" aria-pressed="false" data-src="images/solar-table-ansys.jpg" data-alt="ANSYS Workbench safety factor results for the table frame">ANSYS analysis</button>
+            <button type="button" aria-pressed="false" data-src="images/solar-table-solidworks.jpg" data-alt="Table frame open in SolidWorks">In SolidWorks</button>
+          </div>
+        </div>
+        <div>
+          <h4>Chromoly steel table frame with ANSYS analysis</h4>
+          <p>A welded chromoly steel table frame I designed for the solar car team, with a goal of keeping it under 150 lb. I modeled the tube frame in SolidWorks using 3D sketching, weldment structural members and extend/trim tools to join the cross-bracing. I then analyzed it in ANSYS Workbench under a 2,500 N load in the X and Z directions and a 6,000 N downward load in Y. The final design weighs 120 lb, 30 lb under the limit, with a minimum factor of safety of 2.23.</p>
+          <dl class="stats"><div><dt>frame weight, under a 150 lb limit</dt><dd>120 lb</dd></div><div><dt>minimum factor of safety</dt><dd>2.23</dd></div><div><dt>vertical load analyzed</dt><dd>6,000 N</dd></div></dl>
+          <ul class="chips"><li>SolidWorks weldments</li><li>3D sketching</li><li>ANSYS Workbench</li><li>FEA</li><li>Chromoly steel</li></ul>
+        </div>
+      </article>
+
+      <article class="project" id="p-ratchet">
+        <div class="gallery">
+          <div class="figure" data-img="images/solar-wheel-model.jpg" data-label="Ratchet wheel 3D model"></div>
+          <div class="views" role="group" aria-label="Choose view">
+            <button type="button" aria-pressed="true" data-src="images/solar-wheel-model.jpg" data-alt="Ratchet wheel 3D model">3D model</button>
+            <button type="button" aria-pressed="false" data-src="images/solar-wheel-solidworks.jpg" data-alt="Ratchet wheel open in SolidWorks with its feature tree">In SolidWorks</button>
+          </div>
+        </div>
+        <div>
+          <h4>Ratchet wheel for a pedal-operated tire lift</h4>
+          <p>A ratchet wheel I designed and modeled from scratch in SolidWorks for the solar car team's tire lift. The lift slides around a single tire and uses a foot pedal ratchet system to raise the wheel off the ground, with no separate floor jack needed. The five angled teeth let the wheel turn in the lifting direction while a pawl locks it in the other, holding the car up between pedal strokes. The stepped center bore mounts it on a shaft. I built the part from sketch-based extrudes and cuts, then added fillets to finish the edges.</p>
+          <ul class="chips"><li>SolidWorks</li><li>Part modeling</li><li>Original design</li></ul>
+        </div>
+      </article>
+      <!-- Empty slot, hidden until a project is added. -->
+      <article class="project" hidden>
+        <div class="figure" data-img="images/solar-2.jpg" data-label="Solar team project 2"></div>
+        <div>
+          <h4>Solar team project 2</h4>
+          <p>Description coming soon.</p>
+          <ul class="chips"><li>3D CAD</li></ul>
+        </div>
+      </article>
+      <!-- Empty slot, hidden until a project is added. -->
+      <article class="project" hidden>
+        <div class="figure" data-img="images/solar-3.jpg" data-label="Solar team project 3"></div>
+        <div>
+          <h4>Solar team project 3</h4>
+          <p>Description coming soon.</p>
+          <ul class="chips"><li>3D CAD</li></ul>
+        </div>
+      </article>
+    </div>
 
     <div class="group" id="class">
       <div class="group-head">
@@ -331,62 +405,6 @@
         </div>
       </article>
     </div>
-    <div class="group" id="solar">
-      <div class="group-head">
-        <h3>Solar car team</h3>
-        <p>Parts and structures I designed and analyzed for the solar car team.</p>
-      </div>
-      <article class="project" id="p-table">
-        <div class="gallery">
-          <div class="figure" data-img="images/solar-table-model.jpg" data-label="Chromoly steel table frame 3D model"></div>
-          <div class="views" role="group" aria-label="Choose view">
-            <button type="button" aria-pressed="true" data-src="images/solar-table-model.jpg" data-alt="Chromoly steel table frame 3D model">3D model</button>
-            <button type="button" aria-pressed="false" data-src="images/solar-table-ansys.jpg" data-alt="ANSYS Workbench safety factor results for the table frame">ANSYS analysis</button>
-            <button type="button" aria-pressed="false" data-src="images/solar-table-solidworks.jpg" data-alt="Table frame open in SolidWorks">In SolidWorks</button>
-          </div>
-        </div>
-        <div>
-          <h4>Chromoly steel table frame with ANSYS analysis</h4>
-          <p>A welded chromoly steel table frame I designed for the solar car team, with a goal of keeping it under 150 lb. I modeled the tube frame in SolidWorks using 3D sketching, weldment structural members and extend/trim tools to join the cross-bracing. I then analyzed it in ANSYS Workbench under a 2,500 N load in the X and Z directions and a 6,000 N downward load in Y. The final design weighs 120 lb, 30 lb under the limit, with a minimum factor of safety of 2.23.</p>
-          <dl class="stats"><div><dt>frame weight, under a 150 lb limit</dt><dd>120 lb</dd></div><div><dt>minimum factor of safety</dt><dd>2.23</dd></div><div><dt>vertical load analyzed</dt><dd>6,000 N</dd></div></dl>
-          <ul class="chips"><li>SolidWorks weldments</li><li>3D sketching</li><li>ANSYS Workbench</li><li>FEA</li><li>Chromoly steel</li></ul>
-        </div>
-      </article>
-
-      <article class="project" id="p-ratchet">
-        <div class="gallery">
-          <div class="figure" data-img="images/solar-wheel-model.jpg" data-label="Ratchet wheel 3D model"></div>
-          <div class="views" role="group" aria-label="Choose view">
-            <button type="button" aria-pressed="true" data-src="images/solar-wheel-model.jpg" data-alt="Ratchet wheel 3D model">3D model</button>
-            <button type="button" aria-pressed="false" data-src="images/solar-wheel-solidworks.jpg" data-alt="Ratchet wheel open in SolidWorks with its feature tree">In SolidWorks</button>
-          </div>
-        </div>
-        <div>
-          <h4>Ratchet wheel for a pedal-operated tire lift</h4>
-          <p>A ratchet wheel I designed and modeled from scratch in SolidWorks for the solar car team's tire lift. The lift slides around a single tire and uses a foot pedal ratchet system to raise the wheel off the ground, with no separate floor jack needed. The five angled teeth let the wheel turn in the lifting direction while a pawl locks it in the other, holding the car up between pedal strokes. The stepped center bore mounts it on a shaft. I built the part from sketch-based extrudes and cuts, then added fillets to finish the edges.</p>
-          <ul class="chips"><li>SolidWorks</li><li>Part modeling</li><li>Original design</li></ul>
-        </div>
-      </article>
-      <!-- Empty slot, hidden until a project is added. -->
-      <article class="project" hidden>
-        <div class="figure" data-img="images/solar-2.jpg" data-label="Solar team project 2"></div>
-        <div>
-          <h4>Solar team project 2</h4>
-          <p>Description coming soon.</p>
-          <ul class="chips"><li>3D CAD</li></ul>
-        </div>
-      </article>
-      <!-- Empty slot, hidden until a project is added. -->
-      <article class="project" hidden>
-        <div class="figure" data-img="images/solar-3.jpg" data-label="Solar team project 3"></div>
-        <div>
-          <h4>Solar team project 3</h4>
-          <p>Description coming soon.</p>
-          <ul class="chips"><li>3D CAD</li></ul>
-        </div>
-      </article>
-    </div>
-
   </section>
 
   <section id="artwork">
